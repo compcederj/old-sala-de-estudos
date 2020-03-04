@@ -101,8 +101,6 @@ modules.xml
 ### Laravel ###
 /vendor/
 node_modules/
-npm-debug.log
-yarn-error.log
 
 # Laravel 4 specific
 bootstrap/compiled.php
@@ -112,10 +110,6 @@ app/storage/
 public/storage
 public/hot
 storage/*.key
-.env
-Homestead.yaml
-Homestead.json
-/.vagrant
 .phpunit.result.cache
 
 ### Linux ###
@@ -192,3 +186,4 @@ Homestead.json
 # Markdown Navigator plugin
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
+/secrets/
