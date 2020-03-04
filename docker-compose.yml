@@ -1,0 +1,38 @@
+version: "3"
+
+volumes:
+  saladeestudos_data:
+
+networks:
+  database:
+    driver: bridge
+  web:
+    driver: bridge
+
+
+services:
+  db:
+    image: postgres:12.1
+    restart: always
+    volumes:
+      - saladeestudos_data:/var/postgresql/data
+      - ./secrets:/run/secrets/
+    networks:
+      - database
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/pg_password
+      POSTGRES_USER_FILE: /run/secrets/pg_user
+      POSTGRES_DB_FILE: /run/secrets/pg_database
+    ports:
+      - 5432:5432
+
+  app:
+    image: ttaranto/docker-nginx-php7
+    volumes:
+      - .:/var/www
+    networks:
+      - database
+      - web
+    ports:
+      - 80:80
+
